@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Union 3D Studio | Catálogo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #0b0f19;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            box-sizing: border-box;
+            z-index: 100;
+            background: rgba(11, 15, 25, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        nav h2 { margin: 0; font-size: 1.2rem; }
+        nav span { color: #facc15; }
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        nav a:hover { color: #facc15; }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(11, 15, 25, 1)),
+                        url('https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+        }
+        .hero-text { max-width: 650px; }
+        .hero h1 { font-size: 3.5rem; margin: 0 0 10px 0; line-height: 1.1; }
+        .hero h1 span { color: #facc15; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px; }
+
+        /* BOTONES */
+        .btn {
+            background: #facc15;
+            color: #0b0f19;
+            border: none;
+            padding: 16px 32px;
+            font-weight: 800;
+            cursor: pointer;
+            border-radius: 8px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .btn:hover { background: #eab308; transform: scale(1.05); }
+
+        /* SECCIONES */
+        .section { padding: 80px 40px; text-align: center; }
+        .grid {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* DISEÑO DE CARDS */
+        .card {
+            background: #1f2937;
+            border-radius: 16px;
+            padding: 20px;
+            transition: 0.4s;
+            border: 1px solid rgba(250, 204, 21, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover { transform: translateY(-10px); border-color: #facc15; }
+        
+        .img-container {
+            position: relative; 
+            width: 100%; 
+            height: 300px; 
+            background: #111827; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .img-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .nav-btn {
+            position: absolute; 
+            top: 50%;
+            transform: translateY(-50%);
+            width: 35px; 
+            height: 35px;
+            background: rgba(0,0,0,0.5); 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            z-index: 5;
+        }
+        .nav-btn:hover { background: #facc15; color: #0b0f19; }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        
+        .card h3 { margin: 10px 0 5px 0; font-size: 1.25rem; }
+        .promo-text { font-size: 0.85rem; color: #facc15; margin-bottom: 15px; }
+        
+        .card button.consultar {
+            background: transparent;
+            border: 2px solid #facc15;
+            color: #facc15;
+            padding: 12px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+            margin-top: auto;
+        }
+        .card button.consultar:hover { background: #facc15; color: #0b0f19; }
+
+        /* WHATSAPP FLOAT */
+        .wa-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav a { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <h2><span>UNION</span> 3D STUDIO</h2>
+    <div>
+        <a href="#inicio">INICIO</a>
+        <a href="#maquinas">IMPRESORAS</a>
+        <a href="#catalogo">CATÁLOGO</a>
+        <a href="#servicios">VENTAS</a>
+    </div>
+</nav>
+
+<section class="hero" id="inicio">
+    <div class="hero-text">
+        <h1><span>UNION</span><br>3D STUDIO</h1>
+        <p>Transformamos tus ideas en realidad con tecnología de impresión 3D de alta precisión.</p>
+        <a href="#catalogo" class="btn">Ver Catálogo Completo</a>
+    </div>
+</section>
+
+<section id="maquinas" style="padding: 100px 20px; text-align: center; background: #0b0f19;">
+    <h2 style="margin-bottom: 50px; font-size: 2.2rem; color: #ffffff; text-transform: uppercase; letter-spacing: 2px;">Nuestra Tecnología</h2>
+    
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
+        
+        <div style="width: 260px; display: flex; flex-direction: column; align-items: center;">
+            <div style="width: 100%; height: 260px; border-radius: 20px; overflow: hidden; border: 2px solid #facc15; margin-bottom: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);">
+                <img src="impresora-1.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <strong style="color: #facc15; font-size: 1.1rem; display: block; margin-bottom: 5px;">Impresora Bambu Lab A1</strong>
+            <p style="color: #e2e8f0; font-size: 0.9rem; margin: 0; line-height: 1.4;">Ideal para impresiones rápidas y multicolor con gran detalle.</p>
+        </div>
+
+        <div style="width: 260px; display: flex; flex-direction: column; align-items: center;">
+            <div style="width: 100%; height: 260px; border-radius: 20px; overflow: hidden; border: 2px solid #facc15; margin-bottom: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);">
+                <img src="impresora-2.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <strong style="color: #facc15; font-size: 1.1rem; display: block; margin-bottom: 5px;">Impresora Bambu Lab P1S</strong>
+            <p style="color: #e2e8f0; font-size: 0.9rem; margin: 0; line-height: 1.4;">Cámara cerrada para materiales técnicos y acabados profesionales.</p>
+        </div>
+
+        <div style="width: 260px; display: flex; flex-direction: column; align-items: center;">
+            <div style="width: 100%; height: 260px; border-radius: 20px; overflow: hidden; border: 2px solid #facc15; margin-bottom: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);">
+                <img src="impresora-3.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <strong style="color: #facc15; font-size: 1.1rem; display: block; margin-bottom: 5px;">Impresora FlashForge ADX5</strong>
+            <p style="color: #e2e8f0; font-size: 0.9rem; margin: 0; line-height: 1.4;">Alta temperatura y precisión para piezas industriales de gran resistencia.</p>
+        </div>
+
+        <div style="width: 260px; display: flex; flex-direction: column; align-items: center;">
+            <div style="width: 100%; height: 260px; border-radius: 20px; overflow: hidden; border: 2px solid #facc15; margin-bottom: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);">
+                <img src="impresora-4.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <strong style="color: #facc15; font-size: 1.1rem; display: block; margin-bottom: 5px;">Calidad de Impresión</strong>
+            <p style="color: #e2e8f0; font-size: 0.9rem; margin: 0; line-height: 1.4;">Capas casi invisibles y terminaciones listas para usar o pintar.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section" id="catalogo">
+    <h2>NUESTRO CATÁLOGO</h2>
+    <div class="grid"> 
+        
+        <div class="card">
+            <div class="img-container">
+                <img id="img-1" src="figura-1.jpeg">
+                <button class="nav-btn prev" onclick="cambiarImagen(1, -1)">❮</button>
+                <button class="nav-btn next" onclick="cambiarImagen(1, 1)">❯</button>
+            </div>
+            <h3>Figuras de Acción</h3>
+            <p class="promo-text">✨ Presupuesto sin cargo</p>
+            <button class="consultar" onclick="pedir('Figuras de Acción')">Consultar ahora</button>
+        </div>
+
+        <div class="card">
+            <div class="img-container">
+                <img id="img-2" src="llaveros-1.jpeg">
+                <button class="nav-btn prev" onclick="cambiarImagen(2, -1)">❮</button>
+                <button class="nav-btn next" onclick="cambiarImagen(2, 1)">❯</button>
+            </div>
+            <h3>Llaveros Custom</h3>
+            <p class="promo-text">✨ Presupuesto sin cargo</p>
+            <button class="consultar" onclick="pedir('Llaveros Custom')">Consultar ahora</button>
+        </div>
+
+        <div class="card">
+            <div class="img-container">
+                <img id="img-3" src="producto-3.jpeg">
+            </div>
+            <h3>Moldes Especiales</h3>
+            <p class="promo-text">✨ Presupuesto sin cargo</p>
+            <button class="consultar" onclick="pedir('Moldes Especiales')">Consultar ahora</button>
+        </div>
+
+        <div class="card">
+            <div class="img-container">
+                <img id="img-4" src="macetas-1.jpeg">
+                <button class="nav-btn prev" onclick="cambiarImagen(4, -1)">❮</button>
+                <button class="nav-btn next" onclick="cambiarImagen(4, 1)">❯</button>
+            </div>
+            <h3>Macetitas</h3>
+            <p class="promo-text">✨ Presupuesto sin cargo</p>
+            <button class="consultar" onclick="pedir('Macetitas')">Consultar ahora</button>
+        </div>
+
+        <div class="card">
+            <div class="img-container">
+                <img id="img-5" src="minicuadro-1.jpeg">
+                <button class="nav-btn prev" onclick="cambiarImagen(5, -1)">❮</button>
+                <button class="nav-btn next" onclick="cambiarImagen(5, 1)">❯</button>
+            </div>
+            <h3>Mini Cuadros</h3>
+            <p class="promo-text">✨ Presupuesto sin cargo</p>
+            <button class="consultar" onclick="pedir('Mini Cuadros')">Consultar ahora</button>
+        </div>
+
+        <div class="card">
+            <div class="img-container">
+                <img id="img-6" src="personalizados-1.jpeg">
+                <button class="nav-btn prev" onclick="cambiarImagen(6, -1)">❮</button>
+                <button class="nav-btn next" onclick="cambiarImagen(6, 1)">❯</button>
+            </div>
+            <h3>Personalizados</h3>
+            <p class="promo-text">✨ Presupuesto sin cargo</p>
+            <button class="consultar" onclick="pedir('Productos Personalizados')">Consultar ahora</button>
+        </div>
+
+    </div>
+</section>
+
+<section class="section" id="servicios" style="background: #0f172a;">
+    <h2>TIPOS DE VENTA</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>🛠️ Personalizadas</h3>
+            <p>Diseños únicos a pedido.</p>
+            <button class="consultar" onclick="whatsapp('5491155661758','personalizado')">Consultar</button>
+        </div>
+        <div class="card">
+            <h3>📦 Mayoristas</h3>
+            <p>Producción por cantidad.</p>
+            <button class="consultar" onclick="whatsapp('5491141996094','mayorista')">Consultar</button>
+        </div>
+        <div class="card">
+            <h3>🛒 Minoristas</h3>
+            <p>Compras individuales.</p>
+            <button class="consultar" onclick="whatsapp('5491133527658','minorista')">Consultar</button>
+        </div>
+    </div>
+</section>
+
+<a href="https://wa.me/5491155661758" class="wa-float" target="_blank">
+    <span>💬</span>
+</a>
+
+<script>
+const galerias = {
+    1: ["figura-1.jpeg", "figura-2.jpeg", "figura-3.jpeg"],
+    2: ["llaveros-1.jpeg", "llaveros-2.jpeg"],
+    4: ["macetas-1.jpeg", "macetas-2.jpeg", "macetas-3.jpeg", "macetas-4.jpeg"],
+    5: ["minicuadro-1.jpeg", "minicuadro-2.jpeg"],
+    6: ["personalizados-1.jpeg", "personalizados-2.jpeg", "personalizados-3.jpeg", "personalizados-4.jpeg"]      
+};
+
+let indices = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+
+function cambiarImagen(idProducto, direccion) {
+    const fotos = galerias[idProducto];
+    if (!fotos) return;
+
+    indices[idProducto] += direccion;
+
+    if (indices[idProducto] >= fotos.length) indices[idProducto] = 0;
+    if (indices[idProducto] < 0) indices[idProducto] = fotos.length - 1;
+
+    document.getElementById("img-" + idProducto).src = fotos[indices[idProducto]];
+}
+
+function pedir(producto){
+    const mensaje = "Hola Union 3D! Me interesa consultar por: " + producto + ". ¿Me podrías pasar un presupuesto?";
+    window.open("https://wa.me/5491155661758?text=" + encodeURIComponent(mensaje));
+}
+
+function whatsapp(numero, tipo){
+    let mensaje = "Hola! Quiero hacer una consulta.";
+    if(tipo === "personalizado") mensaje = "Hola! Quiero consultar por un diseño personalizado.";
+    if(tipo === "mayorista") mensaje = "Hola! Me interesa información sobre ventas por mayor.";
+    if(tipo === "minorista") mensaje = "Hola! Quiero ver el catálogo minorista.";
+    window.open("https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje));
+}
+</script>
+
+</body>
+</html>
