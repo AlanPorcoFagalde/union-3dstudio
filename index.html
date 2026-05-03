@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <!-- AGREGADO CRUCIAL PARA CELULARES -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Union 3D Studio | Catálogo</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
@@ -171,17 +170,35 @@
             z-index: 1000;
         }
 
-        /* AGREGADO PARA EL CELULAR */
+        /* --- CAMBIOS PARA EL CELULAR --- */
         @media (max-width: 768px) {
             nav { padding: 15px 20px; }
-            nav a { display: none; } /* Oculta links para que no se amontonen */
+            nav a { display: none; }
             .hero { padding: 0 20px; text-align: center; justify-content: center; }
             .hero h1 { font-size: 2.5rem; }
             .hero p { font-size: 1rem; }
-            .section { padding: 60px 20px; }
-            /* Arreglo para la sección de impresoras que tenía anchos fijos inline */
-            .tech-container { gap: 20px !important; }
-            .tech-item { width: 100% !important; max-width: 300px; }
+            .section { padding: 40px 15px; }
+
+            /* Mantenemos 2 columnas en el catálogo */
+            .grid { 
+                grid-template-columns: repeat(2, 1fr) !important; 
+                gap: 15px;
+            }
+            .img-container { height: 180px; }
+            .card h3 { font-size: 0.9rem; }
+            .card { padding: 12px; }
+            .card button.consultar { padding: 8px; font-size: 0.7rem; }
+
+            /* Mantenemos 2 columnas en la sección de impresoras */
+            .tech-grid { 
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 20px !important;
+            }
+            .tech-item { width: 100% !important; }
+            .tech-item div { height: 180px !important; }
+            .tech-item strong { font-size: 0.9rem !important; }
+            .tech-item p { font-size: 0.75rem !important; }
         }
     </style>
 </head>
@@ -206,11 +223,11 @@
     </div>
 </section>
 
-<!-- SECCIÓN TECNOLOGÍA (Mantuve tus estilos pero agregué clases para el responsive) -->
 <section id="maquinas" style="padding: 100px 20px; text-align: center; background: #0b0f19;">
     <h2 style="margin-bottom: 50px; font-size: 2.2rem; color: #ffffff; text-transform: uppercase; letter-spacing: 2px;">Nuestra Tecnología</h2>
     
-    <div class="tech-container" style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
+    <!-- Agregué la clase tech-grid para controlar el responsive -->
+    <div class="tech-grid" style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
         
         <div class="tech-item" style="width: 260px; display: flex; flex-direction: column; align-items: center;">
             <div style="width: 100%; height: 260px; border-radius: 20px; overflow: hidden; border: 2px solid #facc15; margin-bottom: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);">
